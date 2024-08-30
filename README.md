@@ -1,5 +1,5 @@
 ## Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates
-* Code coming soon.
+* [Arixv](https://arxiv.org/pdf/2408.13006), Code coming soon.
 
 ### Example Evaluation Results
 #### Metric Report Tables
