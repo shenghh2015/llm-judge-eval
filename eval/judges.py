@@ -10,6 +10,7 @@ from datetime import date
 import multiprocessing
 import openai
 
+from configs.openai_api_key import OPENAI_MODELS
 from utils.utils_read_write import jsonl_file_read, jsonl_file_write
 from utils.utils_others import new_dir, find_latest
 from utils.utils_judge import remove_redundant, make_judge_result
@@ -89,9 +90,12 @@ class LLMJudge(BaseJudge):
       - use_cache (bool, optional): if to use cached file. Defaults to True.
     """
     super(LLMJudge, self).__init__(*args, **kwargs)
-    if api_key is not None:
+    
+    self.api_key = api_key
+    
+    if api_key is not None and llm in OPENAI_MODELS:
       print("Commercial LLM judge is used!")
-      self.api_key = api_key
+      # self.api_key = api_key
     else:
       print("Open-sourced LLM judge is used!")
       

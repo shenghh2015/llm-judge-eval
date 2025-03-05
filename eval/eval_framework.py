@@ -4,7 +4,7 @@ It allows a holistic flow from data to the evaluaton results, including metric r
 """
 import os
 import glob
-from configs.openai_api_key import OPENAI_API_KEY
+from configs.openai_api_key import OPENAI_API_KEY, OPENAI_MODELS
 from eval.data_sampler import DataSampler
 from eval.judges import LLMJudge
 from eval.metrics_computation import MetricsComputation
@@ -71,7 +71,8 @@ class JudgesEval:
                        num_workers=8,
                        use_cache_samples=True,
                        use_cache_results=True,
-                       cache_dir = "./outputs/"
+                       cache_dir = "./outputs/",
+                       api_key = None,
                 ):
         """
         Evaluation framework:
@@ -96,6 +97,7 @@ class JudgesEval:
           - use_cache_samples: if use cached samples (from the repeated stratified sampling) from the preprocessed dataset.
           - use_cache_results: if use cached results (if yes and the cached results are matched, the most recent cached results will be used).
           - cache_dir: directory to store the cached results. Defaults to "./outputs/".
+          - api_key: api_key is explicitly specified while open-sourced LLM is used with vllm inference.
         """
         
         self.data_path = data_path
@@ -113,6 +115,7 @@ class JudgesEval:
         self.use_cache_samples = use_cache_samples
         self.use_cache_results = use_cache_results
         self.cache_dir = cache_dir
+        self.api_key = OPENAI_API_KEY if self.api_key is None else api_key
         
         self.data_sampler = DataSampler(dataset_id = dataset_id,
                                         dataset_path = data_path,
@@ -156,7 +159,7 @@ class JudgesEval:
                          template=template, 
                          extract_rule=self.extract_rule, 
                          temperature=self.temperature, 
-                         api_key=OPENAI_API_KEY,
+                         api_key=self.api_key,
                          data_path=self.cache_dir,
                          dataset_id=self.dataset_id,
                          cache_dir=self.cache_dir) 

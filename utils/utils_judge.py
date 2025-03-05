@@ -7,6 +7,8 @@ from collections import defaultdict
 # import openai
 from openai import OpenAI
 
+from configs.openai_api_key import OPENAI_MODELS
+
 def import_template(template_name=''):
   """
   Import the dictionary with template, text process function, 
@@ -50,7 +52,10 @@ def evaluate_response_pair(original_text,
   '''Evaluate response pair (response1, response2) using the LLM judge.'''
   prompt = create_comparison_prompt(original_text, response1, response2, template)
   start_time = time.time()
-  client = OpenAI(api_key=api_key)
+  if model in OPENAI_MODELS:
+    client = OpenAI(api_key=api_key)  # openai LLM
+  else:
+    client = OpenAI(api_key="EMPTY", base_url=api_key)   # open-sourced LLM
   judge_response = client.chat.completions.create(model=model,
                                                 messages=[{
                                                     "role":
