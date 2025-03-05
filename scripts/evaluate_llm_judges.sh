@@ -1,12 +1,12 @@
 # Summarization
-DATASET_DIR=./datasets/formatted_datasets/summarize/data.summarize.2025_03_05.jsonl
-DATASET_ID=summarize
-TEMPLATES="['chen-2023_summarize', 'guo-2024_summarize', 'liusie-2024_summarize', 'rafailov-2023_summarize', 'scheurer-2024_summarize', 'wang-2024_summarize', 'wu-2024_summarize', 'zheng-2023_summarize']"
+#DATASET_DIR=./datasets/formatted_datasets/summarize/data.summarize.2024_10_10.jsonl
+#DATASET_ID=summarize
+#TEMPLATES="['chen-2023_summarize', 'guo-2024_summarize', 'liusie-2024_summarize', 'rafailov-2023_summarize', 'scheurer-2024_summarize', 'wang-2024_summarize', 'wu-2024_summarize', 'zheng-2023_summarize']"
 
 # HHRLHF-Helpful
-# DATASET_DIR=./datasets/formatted_datasets/hhrlhf_helpful/data.hhrlhf_helpful.2025_03_05.jsonl
-# DATASET_ID=hhrlhf_helpful
-# TEMPLATES="['bai-2023_hhrlhf_helpful', 'cheng-2024_hhrlhf_helpful', 'guo-2024_hhrlhf_helpful', 'mehta-2023_hhrlhf_helpful', 'rafailov-2023_hhrlhf_helpful', 'shen-2024_hhrlhf_helpful', 'wu-2023_hhrlhf_helpful', 'xu-2024_hhrlhf_helpful', 'zeng-2024_hhrlhf_helpful', 'zheng-2023_hhrlhf_helpful']"
+DATASET_DIR=./datasets/formatted_datasets/hhrlhf_helpful/data.hhrlhf_helpful.2024_10_10.jsonl
+DATASET_ID=hhrlhf_helpful
+TEMPLATES="['bai-2023_hhrlhf_helpful', 'cheng-2024_hhrlhf_helpful', 'guo-2024_hhrlhf_helpful', 'mehta-2023_hhrlhf_helpful', 'rafailov-2023_hhrlhf_helpful', 'shen-2024_hhrlhf_helpful', 'wu-2023_hhrlhf_helpful', 'xu-2024_hhrlhf_helpful', 'zeng-2024_hhrlhf_helpful', 'zheng-2023_hhrlhf_helpful']"
 
 MODEL_NAMES="['gpt-4o-mini']"
 SPLIT_SIZE=200
