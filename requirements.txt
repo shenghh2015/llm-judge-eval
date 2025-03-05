@@ -7,4 +7,5 @@ tqdm==4.66.1
 typing-extensions>=4.11
 regex==2024.7.24
 openai==1.51.2
-vllm
+scikit-learn==1.6.1
+vllm==0.6.1.post2
