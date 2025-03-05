@@ -18,7 +18,7 @@ EXTRACT_RULE=combine
 TEMPERATURE=0.1
 NUM_WORKERS=8
 CACHE_DIR=./outputs/
-API_KEY=
+API_KEY=http://10.10.10.130:8001/v1
 
 python eval/eval_open_llm_judges.py \
 --processed_data_path $DATASET_DIR \
