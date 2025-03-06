@@ -9,16 +9,16 @@ TEMPLATES="['chen-2023_summarize', 'guo-2024_summarize', 'liusie-2024_summarize'
 # TEMPLATES="['bai-2023_hhrlhf_helpful', 'cheng-2024_hhrlhf_helpful', 'guo-2024_hhrlhf_helpful', 'mehta-2023_hhrlhf_helpful', 'rafailov-2023_hhrlhf_helpful', 'shen-2024_hhrlhf_helpful', 'wu-2023_hhrlhf_helpful', 'xu-2024_hhrlhf_helpful', 'zeng-2024_hhrlhf_helpful', 'zheng-2023_hhrlhf_helpful']"
 
 MODEL_NAMES="['qwen25-7b-instr']"
-SPLIT_SIZE=200
+SPLIT_SIZE=10
 NUM_SPLITS=5
 SELF_CONSIST_ID=0
-NUM_RUNS=5
+NUM_RUNS=1
 NUM_EVAL=10
 EXTRACT_RULE=combine
 TEMPERATURE=0.1
-NUM_WORKERS=1
+NUM_WORKERS=4
 CACHE_DIR=./outputs/
-API_KEY=http://10.10.10.130:8001/v1
+API_KEY=http://localhost:8000/v1
 
 python eval/eval_open_llm_judges.py \
 --processed_data_path $DATASET_DIR \
