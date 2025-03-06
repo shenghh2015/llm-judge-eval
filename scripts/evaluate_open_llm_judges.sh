@@ -9,11 +9,11 @@ TEMPLATES="['chen-2023_summarize', 'guo-2024_summarize', 'liusie-2024_summarize'
 # TEMPLATES="['bai-2023_hhrlhf_helpful', 'cheng-2024_hhrlhf_helpful', 'guo-2024_hhrlhf_helpful', 'mehta-2023_hhrlhf_helpful', 'rafailov-2023_hhrlhf_helpful', 'shen-2024_hhrlhf_helpful', 'wu-2023_hhrlhf_helpful', 'xu-2024_hhrlhf_helpful', 'zeng-2024_hhrlhf_helpful', 'zheng-2023_hhrlhf_helpful']"
 
 MODEL_NAMES="['qwen25_7b_instr']"
-SPLIT_SIZE=10
+SPLIT_SIZE=200
 NUM_SPLITS=5
 SELF_CONSIST_ID=0
-NUM_RUNS=1
-NUM_EVAL=10
+NUM_RUNS=5
+NUM_EVAL=-1
 EXTRACT_RULE=combine
 TEMPERATURE=0.1
 NUM_WORKERS=4
@@ -34,5 +34,6 @@ python eval/eval_open_llm_judges.py \
 --temperature $TEMPERATURE \
 --num_workers $NUM_WORKERS \
 --use_cache_results \
+--use_cache_samples \
 --cache_dir $CACHE_DIR \
 --api_key $API_KEY
