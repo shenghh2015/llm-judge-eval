@@ -8,7 +8,7 @@ TEMPLATES="['chen-2023_summarize', 'guo-2024_summarize', 'liusie-2024_summarize'
 # DATASET_ID=hhrlhf_helpful
 # TEMPLATES="['bai-2023_hhrlhf_helpful', 'cheng-2024_hhrlhf_helpful', 'guo-2024_hhrlhf_helpful', 'mehta-2023_hhrlhf_helpful', 'rafailov-2023_hhrlhf_helpful', 'shen-2024_hhrlhf_helpful', 'wu-2023_hhrlhf_helpful', 'xu-2024_hhrlhf_helpful', 'zeng-2024_hhrlhf_helpful', 'zheng-2023_hhrlhf_helpful']"
 
-MODEL_NAMES="['qwq32b]"
+MODEL_NAMES="['qwq32b']"
 SPLIT_SIZE=200
 NUM_SPLITS=5
 SELF_CONSIST_ID=0
