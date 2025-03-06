@@ -33,7 +33,6 @@ python eval/eval_open_llm_judges.py \
 --extract_rule $EXTRACT_RULE \
 --temperature $TEMPERATURE \
 --num_workers $NUM_WORKERS \
---use_cache_samples \
 --use_cache_results \
 --cache_dir $CACHE_DIR \
 --api_key $API_KEY
