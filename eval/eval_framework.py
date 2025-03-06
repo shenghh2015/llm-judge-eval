@@ -123,8 +123,9 @@ class JudgesEval:
                                         num_splits = num_splits,
                                         cache_dir = cache_dir,
                                         reset=(not self.use_cache_samples))
-        
-        self.judge_list = self._create_judges()  
+       
+        print(">> data sampling is done!")
+        self.judge_list = self._create_judges()
         self.metrics_computer = MetricsComputation(data_path=cache_dir, 
                                                   num_runs=num_runs, 
                                                   cache_dir=cache_dir)
