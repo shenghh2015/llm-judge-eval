@@ -94,6 +94,7 @@ def sample_data(data_path, num_splits, split_size):
   evaluation_indeces = {}
   print("stratefied sampling")
   for split_idx in range(num_splits):
+    print(f"> split {split_idx}")
     sss = StratifiedShuffleSplit(n_splits=1,
                                  test_size=split_size,
                                  random_state=1234)
