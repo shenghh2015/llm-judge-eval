@@ -13,8 +13,8 @@ import openai
 from configs.openai_api_key import OPENAI_MODELS
 from utils.utils_read_write import jsonl_file_read, jsonl_file_write
 from utils.utils_others import new_dir, find_latest
-#from utils.utils_judge import remove_redundant, make_judge_result
-from utils.utils_open_judge import remove_redundant, make_judge_result
+from utils.utils_judge import remove_redundant, make_judge_result
+
 
 # Base class for all judge classes
 class BaseJudge:

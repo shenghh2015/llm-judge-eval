@@ -116,7 +116,7 @@ class JudgesEval:
         self.use_cache_results = use_cache_results
         self.cache_dir = cache_dir
         self.api_key = OPENAI_API_KEY if api_key is None else api_key
-        
+        print("api_key: ", self.api_key)
         self.data_sampler = DataSampler(dataset_id = dataset_id,
                                         dataset_path = data_path,
                                         split_size = split_size,
