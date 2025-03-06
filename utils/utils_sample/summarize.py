@@ -92,6 +92,7 @@ def sample_data(data_path, num_splits, split_size):
   preference_labels = np.array([data[1] for data in total_data])
 
   evaluation_indeces = {}
+  print("stratefied sampling")
   for split_idx in range(num_splits):
     sss = StratifiedShuffleSplit(n_splits=1,
                                  test_size=split_size,
