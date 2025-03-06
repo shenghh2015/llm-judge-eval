@@ -99,8 +99,8 @@ def sample_data(data_path, num_splits, split_size):
                                  test_size=split_size,
                                  random_state=1234)
     _, test_index = next(iter(sss.split(absolute_indeces, preference_labels)))
-    print(test_index)
-    print(preference_labels[test_index])
+    #print(test_index)
+    #print(preference_labels[test_index])
     num_prefer_long = preference_labels[test_index].sum()
     
     num_prefer_not_long = len(test_index) - num_prefer_long
