@@ -9,6 +9,7 @@ import time
 from datetime import date
 import multiprocessing
 import openai
+from thread import Thread
 
 from configs.openai_api_key import OPENAI_MODELS
 from utils.utils_read_write import jsonl_file_read, jsonl_file_write
