@@ -102,8 +102,6 @@ def sample_data(data_path, num_splits, split_size):
     _, test_index = next(sss.split(absolute_indeces, preference_labels))
     #print(len(test_index))
     #print(len(preference_labels[test_index]))
-    print(test_index)
-    print(preference_labels[test_index])
     num_prefer_long = preference_labels[test_index].sum()
     
     num_prefer_not_long = len(test_index) - num_prefer_long
