@@ -8,7 +8,7 @@ TEMPLATES="['rafailov-2023_summarize']"
 #TEMPLATES="['rafailov-2023_hhrlhf_helpful']"
 
 MODEL_NAMES="['qwen25_32b_instr']"
-API_KEY=http://10.10.10.132:8000/v1
+API_KEY=http://10.10.10.130:8004/v1
 
 SPLIT_SIZE=200
 NUM_SPLITS=5
