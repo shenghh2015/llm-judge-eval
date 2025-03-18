@@ -4,3 +4,6 @@ __pycache__/
 configs/openai_api_key.py
 datasets/
 outputs/
+scripts/test_experiment/
+scripts/legacy/
+temp_codes/
