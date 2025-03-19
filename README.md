@@ -4,10 +4,6 @@
 [ 📖 `ICRL 2025 Workshop Paper` ](https://arxiv.org/abs/2408.13006) 
 [ 📜 `BibTeX` ](#references)
 
-<!-- <div align="center">
-  <img src="./examples/example_results/framework.jpg" width="90%"/>
-</div> -->
-
 ## Table of Contents
 We aim at providing `evaluation tools` and `mini-benchmarks` to _quickly_ and _conveniently_ examinate the judging ability and vunerabilities of LLMs-as-judges for a variety of taks. Our repository includes:
 * [📊`LLM-as-Judge Mini-Benchmark` ](#llm-as-judge-mini-benchmark): A ini-Benchmark that compare the judging ability of LLM-as-Judges for a variety of tasks.
@@ -23,10 +19,8 @@ We aim at providing `evaluation tools` and `mini-benchmarks` to _quickly_ and _c
 </div>
 <!-- ![Evaluation Framework](./examples/example_results/framework.jpg) -->
 
-
-
-## Package installation
-Run the following command to install the required Python packages.
+## 🛠️ Installation
+### Option 1: Using `uv` (highly recommended)
 ```bash
 # install uv
 pip install uv
@@ -38,9 +32,20 @@ source .venv/bin/activate
 # install requirement
 uv pip install -r requirements.txt
 
-# export python python
-vi ~/.bashrc
-export PYTHONPATH=./
+# export python path
+vim ~/.bashrc
+export PYTHONPATH=.
+```
+
+### Option 2: Using conda
+```bash
+conda -n llm_judge_eval python=3.11
+conda activate llm_judge_eval
+pip install -r requirements.txt
+
+# export python path
+vim ~/.bashrc
+export PYTHONPATH=.
 ```
 
 ## 🚀 LLMs-as-Judges Quick Evaluation
