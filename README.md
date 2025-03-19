@@ -9,7 +9,9 @@
 </div> -->
 
 ## Table of Contents
-We aimed to provide `evaluation tools` and `mini-benchmarks` to _quickly_ and _conveniently_ examinate the judging ability and vunerabilities of LLMs used as judges for a variety of taks. Our works include `framework`, `explainable metrics`, `diverse prompting templates`, `diverse models`. This repository contains:
+We aim at providing `evaluation tools` and `mini-benchmarks` to _quickly_ and _conveniently_ examinate the judging ability and vunerabilities of LLMs used as judges for a variety of taks. 
+<!-- Our works include `framework`, `explainable metrics`, `diverse prompting templates`, `diverse models`.  -->
+Our repository contains:
 * [📊`LLM-as-Judge Mini-Benchmark` ](#llm-as-judge-mini-benchmark): A Mini-Benchmark that compare the judging ability of LLM-as-Judges for a variety of tasks.
 * [🧰`Quick Evaluation Tool`](#llms-as-judges-quick-evaluation): A simple evaluation tool that allows users to quickly examine the judging ability of commercial models (OpenAI models) and open-source models with minimal setup effort.
 * [📖`ICRL 2025 Workshop Paper`](https://arxiv.org/abs/2408.13006): The codebase for our `ICRL 2025 Workshop` paper: _Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates_. In the work, we systematically evaluate LLM-as-a-Judge methodology on two LLM alignment datasets (i.e ``TL;DR Summerization`` and ``HH-RLHF-Helpful``):
