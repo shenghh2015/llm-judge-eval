@@ -1,20 +1,29 @@
-<h1 align="center">Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates</h2>
-<!-- [[`📕 Paper`](https://arxiv.org/pdf/2408.13006)] [[`📊 Mini-Benchmark`](#Mini-Benchmark)] [[`🏷️ BibTeX`](#References)] -->
+<h1 align="center">Systematic Evaluation of LLM-as-a-Judge: Explainable Metrics, Diverse Prompt Templates, and Diverse Models</h2>
 
-[ 📖 `ICRL Workshop Paper` ](https://arxiv.org/abs/2408.13006) 
-[ 📊 `Mini-Benchmark` ](#mini-benchmark) 
+[ 📖 `ICRL 2025 Workshop Paper` ](https://arxiv.org/abs/2408.13006) 
+[ 📊 `LLM-as-Judge Mini-Benchmark` ](#llm-as-judge-mini-benchmark) 
 [ 📜 `BibTeX` ](#references)
 
-## Introduction
-This repository contains code for our paper _Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates_. [[arXiv](https://arxiv.org/pdf/2408.13006)], which will be presented in [ICLR 2025 Workshop on Building Trust in Language Models and Applications](https://iclr.cc/virtual/2025/workshop/23984).
+<!-- <div align="center">
+  <img src="./examples/example_results/framework.jpg" width="90%"/>
+</div> -->
 
-![Evaluation Framework](./examples/example_results/framework.jpg)
+## Table of Contents
+We aimed to provide `evaluation tools` and `mini-benchmarks` to _quickly_ and _conveniently_ examinate the judging ability and vunerabilities of LLMs used as judges for a variety of taks. Our works include `framework`, `explainable metrics`, `diverse prompting templates`, `diverse models`. This repository contains:
+* [📊`LLM-as-Judge Mini-Benchmark` ](#llm-as-judge-mini-benchmark): A Mini-Benchmark that compare the judging ability of LLM-as-Judges for a variety of tasks.
+* [🧰`Quick Evaluation Tool`](#llms-as-judges-quick-evaluation): A simple evaluation tool that allows users to quickly examine the judging ability of commercial models (OpenAI models) and open-source models with minimal setup effort.
+* [📖`ICRL 2025 Workshop Paper`](https://arxiv.org/abs/2408.13006): The codebase for our `ICRL 2025 Workshop` paper: _Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates_. In the work, we systematically evaluate LLM-as-a-Judge methodology on two LLM alignment datasets (i.e ``TL;DR Summerization`` and ``HH-RLHF-Helpful``):
+  - We define evaluation metrics with improved theoretical interpretability. 
+  - We develop a framework to evaluate, compare, and visualize the reliability and alignment of LLM judges.
+  - We investigate the effect of diverse prompt templates on LLM-judge reliability. 
+  - Our results indicate a significant impact of prompt templates on LLM judge performance, as well as a mediocre alignment level between the tested LLM judges and human evaluators.
 
-In this work, we systematically evaluate LLM-as-a-Judge methodology on two LLM alignment datasets (i.e ``TL;DR Summerization`` and ``HH-RLHF-Helpful``):
-* we define evaluation metrics with improved theoretical interpretability. 
-* we develop a framework to evaluate, compare, and visualize the reliability and alignment of LLM judges.
-* we investigate the effect of diverse prompt templates on LLM-judge reliability. 
-* our results indicate a significant impact of prompt templates on LLM judge performance, as well as a mediocre alignment level between the tested LLM judges and human evaluators.
+<div align="center">
+  <img src="./examples/example_results/framework.jpg" width="95%"/>
+</div>
+<!-- ![Evaluation Framework](./examples/example_results/framework.jpg) -->
+
+
 
 ## Package installation
 Run the following command to install the required Python packages.
@@ -34,7 +43,7 @@ vi ~/.bashrc
 export PYTHONPATH=./
 ```
 
-## 🚀 Quick Evaluation of LLM-as-Judges: Accuracy (Both) and Accuracy (Random)
+## 🚀 LLMs-as-Judges Quick Evaluation
 #### Build up an LLM inference API service using vllm
 Here is an example command to set up an LLM inference API service using vllm (See vllm [QuickStart](https://docs.vllm.ai/en/latest/getting_started/quickstart.html) for more usage)
 ```bash
@@ -78,7 +87,7 @@ python simple_eval/judge_eval.py --model gpt-4o --task summary                 #
 python simple_eval/judge_eval.py --model gpt-4o --task summhh_rlhf_helpfulary  # summary task
 ```
 
-### Mini-Benchmark
+### LLM-as-Judge Mini-Benchmark
 We build a `mini-benchmark` dataset containing `400` data samples: `200` of them are drawn from `summary` dataset and `200` of them are drawn from `hh_rlhf_helpful` datasets using the stratified sampling strategy introduced in our paper. We designed prompting templates (`simple_eval/templates`) that encourage LLMs to achieve much higher accuracy. Based on the `mini-benchmark` and `prompting templates`, we bencmark the judging ability (measured in Accuracy) of widely-used commerical models (`gpt-4o`) and open-sourced state-of-the-art models (`Qwen2.5`, `llama3.3`, `deepseek-r1`) as shown in following table:
 
 ### Full Evaluation of LLM-as-Judges
