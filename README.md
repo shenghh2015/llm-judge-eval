@@ -7,7 +7,7 @@
 ## Table of Contents
 We aim at providing `evaluation tools` and `mini-benchmarks` to _quickly_ and _conveniently_ examinate the judging ability and vunerabilities of LLMs-as-judges for a variety of taks. Our repository includes:
 * [📊`LLM-as-Judge Mini-Benchmark` ](#llm-as-judge-mini-benchmark): A ini-Benchmark that compare the judging ability of LLM-as-Judges for a variety of tasks.
-* [🧰`Quick Evaluation Tool`](#llms-as-judges-quick-evaluation): A simple evaluation tool that allows users to quickly examine the judging ability of commercial models (OpenAI models) and open-source models with minimal setup effort.
+* [🚀 `Quick Evaluation Tool`](#llms-as-judges-quick-evaluation): A simple evaluation tool that allows users to quickly examine the judging ability of commercial models (OpenAI models) and open-source models with minimal setup effort.
 * [📖`ICRL 2025 Workshop Paper`](https://arxiv.org/abs/2408.13006): A codebase for our paper: _Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates_. We systematically evaluated LLM-as-a-Judge methodolodies on two datasets (i.e ``TL;DR Summerization`` and ``HH-RLHF-Helpful``):
   - We define evaluation metrics with improved theoretical interpretability. 
   - We develop a framework to evaluate, compare, and visualize the reliability and alignment of LLM judges.
@@ -94,13 +94,11 @@ python simple_eval/judge_eval.py --model qwen2.5_7b_instruct --base_url http://l
 
 ## 📊 LLM-as-Judge Mini-Benchmark
 We build a `mini-benchmark` contains a mini-dataset of `400` test cases: `200` are drawn from the `summary` dataset and the other `200` are drawn from `hh_rlhf_helpful` dataset, using a stratified sampling strategy introduced in our paper.
-<!-- dataset containing `400` data samples: `200` of them are drawn from `summary` dataset and `200` of them are drawn from `hh_rlhf_helpful` datasets using the stratified sampling strategy introduced in our paper.  -->
 We redesigned prompting templates (`simple_eval/templates`) to silict LLMs to deliver much higher accuracy compared to the diverse prompts commonly used in the two tasks.
 We evaluted widely-used commerical models (`gpt-4o`) and open-sourced state-of-the-art models (`Qwen2.5`, `llama3.3`, `deepseek-r1`) and benchmark them in the following table.
-<!-- Based on the `mini-benchmark` and `prompting templates`, we bencmark the judging ability (measured in Accuracy) of widely-used commerical models (`gpt-4o`) and open-sourced state-of-the-art models (`Qwen2.5`, `llama3.3`, `deepseek-r1`) as shown in following table: -->
 
-### Full Evaluation of LLM-as-Judges
-#### Dataset Preprocessing
+## 📖 Systematic Evaluation of LLM-as-Judges
+### Dataset Preprocessing
 Use the following command to prepare a formatted dataset for the LLM judge evaluation process. 
 The default dir to save the processed dataset ``./datasets/formatted_datasets``. 
 The ``dataset_id`` identifies the formatted dataset, which is better kept consistent in the following steps.
@@ -112,10 +110,10 @@ python datasets/data_preprocessing.py \
 --dataset-id summarize                       # summarize, hhrlhf_helpful
 ```
 
-#### Add OpenAI Key
+### Add OpenAI Key
 Add your own OpenAI key to ``configs/openai_api_key.py`` in order to evaluate LLM judges.
 
-#### Evaluate a Set of LLM Judges by Metric Computation and Visualization
+### Evaluate a Set of LLM Judges by Metric Computation and Visualization
 Use the example below to evaluate a set of LLM judges using the example dataset ``dataset_id=summarize``.
 The templates are specified in ``templates/dataset_id`` folders.
 
@@ -138,7 +136,7 @@ python eval/eval_llm_judges.py \
 --cache_dir ./outputs/    # directory to store the output results
 ```
 
-#### Example Evaluation Results
+### Example Evaluation Results
 ##### Metric Report Tables
 Metric report tables related to evaluating LLM judges (``model:GPT-4o`` with different templates) on the ``TL;DR Summarization`` dataset.
 <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 2px; text-align: center;" >
@@ -152,7 +150,7 @@ Visualization results related to evaluating LLM judges (models + different templ
 <img src="./examples/example_results/accuracy_both_summary.png" width="300"/>   <img src="./examples/example_results/position_bias_summary.png" width="300"/>
 <img src="./examples/example_results/length_bias_summary.png" width="300"/>   <img src="./examples/example_results/position_bias_accuracy_summary.png" width="300"/>
 
-## References
+## 📜 References
 If you find the code and processed datasets useful in your work, please consider citing the following paper:
 ```bibtex
 @article{wei2024systematic,
