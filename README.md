@@ -29,7 +29,7 @@ vi ~/.bashrc
 export PYTHONPATH=./
 ```
 
-### [🚀 Quick Start] Quick Evaluation of LLM-as-Judges: Accuracy (Both) and Accuracy (Random)
+### 🚀 Quick Evaluation of LLM-as-Judges: Accuracy (Both) and Accuracy (Random)
 #### Build up an LLM inference API service using vllm
 Here is an example command to set up an LLM inference API service using vllm (See vllm [quickstart](https://docs.vllm.ai/en/latest/getting_started/quickstart.html) for more usage)
 ```bash
