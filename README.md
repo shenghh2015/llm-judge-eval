@@ -1,4 +1,5 @@
-## Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates [ICLR 2025 Workshop]
+<h1 align="center">Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates</h1>
+[[`📕 Paper`](https://arxiv.org/pdf/2408.13006)] [[``Mini-Benchmark]] [[`🤗 BeaverTails`](https://huggingface.co/datasets/PKU-Alignment/BeaverTails)] [[`🤗 Beaver Evaluation`](https://huggingface.co/datasets/PKU-Alignment/PKU-SafeRLHF)] [[`🤗 BeaverDam-7B`](https://huggingface.co/PKU-Alignment/beaver-dam-7b)] [[`BibTeX`](#citation)]
 
 ## Introduction
 This repository contains code for our paper _Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates_. [[arXiv](https://arxiv.org/pdf/2408.13006)], which will be presented in [ICLR 2025 Workshop on Building Trust in Language Models and Applications](https://iclr.cc/virtual/2025/workshop/23984).
@@ -73,6 +74,9 @@ python simple_eval/judge_eval.py --model gpt-4o --task summary                 #
 python simple_eval/judge_eval.py --model gpt-4o --task summhh_rlhf_helpfulary  # summary task
 ```
 
+### Mini-Benchmark
+We build a `mini-benchmark` dataset containing `400` data samples: `200` of them are drawn from `summary` dataset and `200` of them are drawn from `hh_rlhf_helpful` datasets using the stratified sampling strategy introduced in our paper. We designed prompting templates (`simple_eval/templates`) that encourage LLMs to achieve much higher accuracy. Based on the `mini-benchmark` and `prompting templates`, we bencmark the judging ability (measured in Accuracy) of widely-used commerical models (`gpt-4o`) and open-sourced state-of-the-art models (`Qwen2.5`, `llama3.3`, `deepseek-r1`) as shown in following table:
+
 ### Full Evaluation of LLM-as-Judges
 #### Dataset Preprocessing
 Use the following command to prepare a formatted dataset for the LLM judge evaluation process. 
@@ -127,6 +131,7 @@ Visualization results related to evaluating LLM judges (models + different templ
 <img src="./examples/example_results/length_bias_summary.png" width="300"/>   <img src="./examples/example_results/position_bias_accuracy_summary.png" width="300"/>
 
 ## References
+If you find the code and processed datasets useful in your work, please consider citing the following paper:
 ```
 @article{wei2024systematic,
   title={Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates},
