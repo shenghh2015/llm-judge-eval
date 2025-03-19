@@ -3,7 +3,7 @@
 ### Introduction
 This repository contains code for our paper _Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates_. [[arXiv](https://arxiv.org/pdf/2408.13006)]
 
-![Evaluation Framework](./examples/examples/example_results/framework.jpg)
+![Evaluation Framework](./examples/example_results/framework.jpg)
 
 
 In this work, we systematically evaluate LLM-as-a-Judge methodology on two LLM alignment datasets (i.e ``TL;DR Summerization`` and ``HH-RLHF-Helpful``):
