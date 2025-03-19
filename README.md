@@ -18,7 +18,7 @@ Run the following command to install the required Python packages.
 # install uv
 pip install uv
 
-# build virtual environment
+# build virtual environment and activate the virtual environment
 uv venv --python 3.11
 source .venv/bin/activate
 
@@ -82,8 +82,8 @@ Visualization results related to evaluating LLM judges (models + different templ
 <img src="./example_results/accuracy_both_summary.png" width="300"/>   <img src="./example_results/position_bias_summary.png" width="300"/>
 <img src="./example_results/length_bias_summary.png" width="300"/>   <img src="./example_results/position_bias_accuracy_summary.png" width="300"/>
 
-#### Quick Evaluation of Open-Source LLM for Accuracy (Both) and Accuracy (Random)
-##### Build up an LLM inference API service using vllm
+### Quick Evaluation of LLM-as-Judges for Accuracy (Both) and Accuracy (Random)
+#### Build up an LLM inference API service using vllm
 Here is an example command to set up an LLM inference API service using vllm (See vllm [quickstart]() for more usage)
 ```bash
 CUDA_VISIBLE_GPUS=0 vllm serve Qwen/Qwen2.5-7B-Instruct --port 8000 --served-model-name qwen2.5_7b_instruct --max-model-len 2024
@@ -104,7 +104,7 @@ curl http://localhost:8000/v1/completions \
         "temperature": 0
     }'
 ```
-##### Qucik Evaluation of LLM-as-Judge
+#### Qucik Evaluation of LLM-as-Judge
 ```bash
 # enter the project directory
 cd llm-judge-eval
@@ -115,7 +115,7 @@ python simple_eval/judge_eval.py --model qwen2.5_7b_instruct --base_url http://l
 # hh_rlhf_helpful task    
 python simple_eval/judge_eval.py --model qwen2.5_7b_instruct --base_url http://localhost:8000/v1 --task hh_rlhf_helpful 
 ```
-##### ##### Qucik Evaluation of OpenAI models
+#### Qucik Evaluation of OpenAI models
 ```bash
 export OPENAI_API_KEY=[YOUR OPENAI API KEY HERE]  # You need to set OPENAI_API_KEY environment variable
 cd llm-judge-eval
