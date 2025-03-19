@@ -104,7 +104,7 @@ curl http://localhost:8000/v1/completions \
         "temperature": 0
     }'
 ```
-#### Qucik Evaluation of LLM-as-Judges (Open-source LLMs)
+#### [🚀 Quick Start] Qucik Evaluation of LLM-as-Judges (Open-source LLMs)
 ```bash
 # enter the project directory
 cd llm-judge-eval
