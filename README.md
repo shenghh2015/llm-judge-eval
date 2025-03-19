@@ -19,7 +19,7 @@ We aimed to provide `evaluation tools` and `mini-benchmarks` to _quickly_ and _c
   - Our results indicate a significant impact of prompt templates on LLM judge performance, as well as a mediocre alignment level between the tested LLM judges and human evaluators.
 
 <div align="center">
-  <img src="./examples/example_results/framework.jpg" width="95%"/>
+  <img src="./examples/example_results/framework.jpg" width="80%"/>
 </div>
 <!-- ![Evaluation Framework](./examples/example_results/framework.jpg) -->
 
