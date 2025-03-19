@@ -86,10 +86,10 @@ Visualization results related to evaluating LLM judges (models + different templ
 ##### Build up an LLM inference API service using vllm
 Here is an example command to set up an LLM inference API service using vllm (See vllm [quickstart]() for more usage)
 ```bash
-CUDA_VISIBLE_GPUS=0 vllm serve Qwen/Qwen2.5-1.5B-Instruct --port 8000 --served-model-name qwen2.5_1.5b_instruct --max-model-len 2024
+CUDA_VISIBLE_GPUS=0 vllm serve Qwen/Qwen2.5-7B-Instruct --port 8000 --served-model-name qwen2.5_7b_instruct --max-model-len 2024
 ```
 A LLM inference API service compatible with OpenAI API service is then built with attributes: 
-* model: qwen2.5_1.5b_instruct
+* model: qwen2.5_7b_instruct
 * base_url: http://localhost:8000/v1
 
 Use the command below to check if the API service is setup successfully or not:
@@ -98,7 +98,7 @@ curl http://localhost:8000/v1/models
 curl http://localhost:8000/v1/completions \
     -H "Content-Type: application/json" \
     -d '{
-        "model": "qwen2.5_1.5b_instruct",
+        "model": "qwen2.5_7b_instruct",
         "prompt": "San Francisco is a",
         "max_tokens": 7,
         "temperature": 0
@@ -110,10 +110,10 @@ curl http://localhost:8000/v1/completions \
 cd llm-judge-eval
 
 # summary task
-python simple_eval/judge_eval.py --model qwen2.5_1.5b_instruct --base_url http://localhost:8000/v1 --task summary
+python simple_eval/judge_eval.py --model qwen2.5_7b_instruct --base_url http://localhost:8000/v1 --task summary
 
 # hh_rlhf_helpful task    
-python simple_eval/judge_eval.py --model qwen2.5_1.5b_instruct --base_url http://localhost:8000/v1 --task hh_rlhf_helpful 
+python simple_eval/judge_eval.py --model qwen2.5_7b_instruct --base_url http://localhost:8000/v1 --task hh_rlhf_helpful 
 ```
 ##### ##### Qucik Evaluation of OpenAI models
 ```bash
