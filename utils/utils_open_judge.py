@@ -47,7 +47,8 @@ def evaluate_response_pair(original_text,
                            template,
                            model='gpt-4o',
                            temperature=0.1,
-                           api_key=None
+                           api_key=None,
+                           max_tokens=2048,
                            ):
   '''Evaluate response pair (response1, response2) using the LLM judge.'''
   prompt = create_comparison_prompt(original_text, response1, response2, template)
@@ -67,7 +68,7 @@ def evaluate_response_pair(original_text,
                                                     "content": prompt
                                                 }],
                                                 temperature=temperature,
-                                                max_tokens=500)
+                                                max_tokens=max_tokens)
   process_time = time.time() - start_time
   return judge_response.choices[0].message.content, len(prompt), len(
       judge_response.choices[0].message.content), process_time
