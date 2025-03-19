@@ -49,7 +49,11 @@ export PYTHONPATH=.
 ```
 
 ## 🚀 LLMs-as-Judges Quick Evaluation
-#### Build up an LLM inference API service using vllm
+
+### Commerical LLMs:
+
+### Open-source LLMs
+### Build up an LLM inference API service using vllm
 Here is an example command to set up an LLM inference API service using vllm (See vllm [QuickStart](https://docs.vllm.ai/en/latest/getting_started/quickstart.html) for more usage)
 ```bash
 CUDA_VISIBLE_GPUS=0 vllm serve Qwen/Qwen2.5-7B-Instruct --port 8000 --served-model-name qwen2.5_7b_instruct --max-model-len 2024
@@ -92,8 +96,12 @@ python simple_eval/judge_eval.py --model gpt-4o --task summary                 #
 python simple_eval/judge_eval.py --model gpt-4o --task summhh_rlhf_helpfulary  # summary task
 ```
 
-### LLM-as-Judge Mini-Benchmark
-We build a `mini-benchmark` dataset containing `400` data samples: `200` of them are drawn from `summary` dataset and `200` of them are drawn from `hh_rlhf_helpful` datasets using the stratified sampling strategy introduced in our paper. We designed prompting templates (`simple_eval/templates`) that encourage LLMs to achieve much higher accuracy. Based on the `mini-benchmark` and `prompting templates`, we bencmark the judging ability (measured in Accuracy) of widely-used commerical models (`gpt-4o`) and open-sourced state-of-the-art models (`Qwen2.5`, `llama3.3`, `deepseek-r1`) as shown in following table:
+## 📊 LLM-as-Judge Mini-Benchmark
+We build a `mini-benchmark` contains a mini-dataset of `400` test cases: `200` are drawn from the `summary` dataset and the other `200` are drawn from `hh_rlhf_helpful` dataset, using a stratified sampling strategy introduced in our paper.
+<!-- dataset containing `400` data samples: `200` of them are drawn from `summary` dataset and `200` of them are drawn from `hh_rlhf_helpful` datasets using the stratified sampling strategy introduced in our paper.  -->
+We redesigned prompting templates (`simple_eval/templates`) to silict LLMs to deliver much higher accuracy compared to the diverse prompts commonly used in the two tasks.
+We evaluted widely-used commerical models (`gpt-4o`) and open-sourced state-of-the-art models (`Qwen2.5`, `llama3.3`, `deepseek-r1`) and benchmark them in the following table.
+<!-- Based on the `mini-benchmark` and `prompting templates`, we bencmark the judging ability (measured in Accuracy) of widely-used commerical models (`gpt-4o`) and open-sourced state-of-the-art models (`Qwen2.5`, `llama3.3`, `deepseek-r1`) as shown in following table: -->
 
 ### Full Evaluation of LLM-as-Judges
 #### Dataset Preprocessing
