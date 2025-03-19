@@ -82,7 +82,7 @@ Visualization results related to evaluating LLM judges (models + different templ
 <img src="./examples/example_results/accuracy_both_summary.png" width="300"/>   <img src="./examples/example_results/position_bias_summary.png" width="300"/>
 <img src="./examples/example_results/length_bias_summary.png" width="300"/>   <img src="./examples/example_results/position_bias_accuracy_summary.png" width="300"/>
 
-### Quick Evaluation of LLM-as-Judges for Accuracy (Both) and Accuracy (Random)
+### [🚀 Quick Start] Quick Evaluation of LLM-as-Judges: Accuracy (Both) and Accuracy (Random)
 #### Build up an LLM inference API service using vllm
 Here is an example command to set up an LLM inference API service using vllm (See vllm [quickstart]() for more usage)
 ```bash
@@ -104,7 +104,7 @@ curl http://localhost:8000/v1/completions \
         "temperature": 0
     }'
 ```
-#### [🚀 Quick Start] Qucik Evaluation of LLM-as-Judges (Open-source LLMs)
+#### Qucik Evaluation of LLM-as-Judges (Open-source LLMs)
 ```bash
 # enter the project directory
 cd llm-judge-eval
