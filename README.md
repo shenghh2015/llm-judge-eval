@@ -1,4 +1,4 @@
-<h1 align="center">Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates</h1>
+<h1 align="center">Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates</h2>
 [[`📕 Paper`](https://arxiv.org/pdf/2408.13006)] [[``📊 Mini-Benchmark](#minibench)] [[`🏷️ BibTeX`](#bibtex)]
 
 ## Introduction
