@@ -1,6 +1,6 @@
-# Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates [ICLR 2025 Workshop]
+## Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates [ICLR 2025 Workshop]
 
-### Introduction
+## Introduction
 This repository contains code for our paper _Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates_. [[arXiv](https://arxiv.org/pdf/2408.13006)], which will be presented in [ICLR 2025 Workshop on Building Trust in Language Models and Applications](https://iclr.cc/virtual/2025/workshop/23984).
 
 ![Evaluation Framework](./examples/example_results/framework.jpg)
@@ -11,7 +11,7 @@ In this work, we systematically evaluate LLM-as-a-Judge methodology on two LLM a
 * we investigate the effect of diverse prompt templates on LLM-judge reliability. 
 * our results indicate a significant impact of prompt templates on LLM judge performance, as well as a mediocre alignment level between the tested LLM judges and human evaluators.
 
-### Package installation
+## Package installation
 Run the following command to install the required Python packages.
 ```bash
 # install uv
@@ -29,7 +29,7 @@ vi ~/.bashrc
 export PYTHONPATH=./
 ```
 
-### 🚀 Quick Evaluation of LLM-as-Judges: Accuracy (Both) and Accuracy (Random)
+## 🚀 Quick Evaluation of LLM-as-Judges: Accuracy (Both) and Accuracy (Random)
 #### Build up an LLM inference API service using vllm
 Here is an example command to set up an LLM inference API service using vllm (See vllm [quickstart](https://docs.vllm.ai/en/latest/getting_started/quickstart.html) for more usage)
 ```bash
@@ -126,7 +126,7 @@ Visualization results related to evaluating LLM judges (models + different templ
 <img src="./examples/example_results/accuracy_both_summary.png" width="300"/>   <img src="./examples/example_results/position_bias_summary.png" width="300"/>
 <img src="./examples/example_results/length_bias_summary.png" width="300"/>   <img src="./examples/example_results/position_bias_accuracy_summary.png" width="300"/>
 
-### References
+## References
 ```
 @article{wei2024systematic,
   title={Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates},
