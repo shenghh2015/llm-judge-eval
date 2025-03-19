@@ -32,7 +32,7 @@ export PYTHONPATH=./
 
 ## 🚀 Quick Evaluation of LLM-as-Judges: Accuracy (Both) and Accuracy (Random)
 #### Build up an LLM inference API service using vllm
-Here is an example command to set up an LLM inference API service using vllm (See vllm [quickstart](https://docs.vllm.ai/en/latest/getting_started/quickstart.html) for more usage)
+Here is an example command to set up an LLM inference API service using vllm (See vllm [QuickStart](https://docs.vllm.ai/en/latest/getting_started/quickstart.html) for more usage)
 ```bash
 CUDA_VISIBLE_GPUS=0 vllm serve Qwen/Qwen2.5-7B-Instruct --port 8000 --served-model-name qwen2.5_7b_instruct --max-model-len 2024
 ```
