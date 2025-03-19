@@ -3,7 +3,7 @@
 ### Introduction
 This repository contains code for our paper _Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates_. [[arXiv](https://arxiv.org/pdf/2408.13006)]
 
-![Evaluation Framework](./example_results/framework.jpg)
+![Evaluation Framework](./examples/examples/example_results/framework.jpg)
 
 
 In this work, we systematically evaluate LLM-as-a-Judge methodology on two LLM alignment datasets (i.e ``TL;DR Summerization`` and ``HH-RLHF-Helpful``):
@@ -24,11 +24,11 @@ source .venv/bin/activate
 
 # install requirement
 uv pip install -r requirements.txt
+
+# export python python
+vi ~/.bashrc
+export PYTHONPATH=./
 ```
-<!-- ```bash
-# The python environment has been tested on python=3.8, 3.8.19, 3.9.6
-pip install -r requirements.txt
-``` -->
 
 ### Dataset Preprocessing
 Use the following command to prepare a formatted dataset for the LLM judge evaluation process. 
@@ -73,14 +73,14 @@ python eval/eval_llm_judges.py \
 Metric report tables related to evaluating LLM judges (``model:GPT-4o`` with different templates) on the ``TL;DR Summarization`` dataset.
 <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 2px; text-align: center;" >
   <div>
-    <img src="./example_results/metrics_table.jpg" alt="Accuracy (Both)" style="width:70%;">
+    <img src="./examples/examples/example_results/metrics_table.jpg" alt="Accuracy (Both)" style="width:70%;">
   </div>
 </div>
 
 #### Visualization Results
 Visualization results related to evaluating LLM judges (models + different templates) on the ``TL;DR Summarization`` dataset.\
-<img src="./example_results/accuracy_both_summary.png" width="300"/>   <img src="./example_results/position_bias_summary.png" width="300"/>
-<img src="./example_results/length_bias_summary.png" width="300"/>   <img src="./example_results/position_bias_accuracy_summary.png" width="300"/>
+<img src="./examples/example_results/accuracy_both_summary.png" width="300"/>   <img src="./examples/example_results/position_bias_summary.png" width="300"/>
+<img src="./examples/example_results/length_bias_summary.png" width="300"/>   <img src="./examples/example_results/position_bias_accuracy_summary.png" width="300"/>
 
 ### Quick Evaluation of LLM-as-Judges for Accuracy (Both) and Accuracy (Random)
 #### Build up an LLM inference API service using vllm
@@ -104,18 +104,19 @@ curl http://localhost:8000/v1/completions \
         "temperature": 0
     }'
 ```
-#### Qucik Evaluation of LLM-as-Judge
+#### Qucik Evaluation of LLM-as-Judges (Open-source LLMs)
 ```bash
 # enter the project directory
 cd llm-judge-eval
 
 # summary task
 python simple_eval/judge_eval.py --model qwen2.5_7b_instruct --base_url http://localhost:8000/v1 --task summary
+# {'acc_both': 0.58, 'valid_count_both': 200, 'acc_random': 0.645, 'valid_count_random': 200}
 
 # hh_rlhf_helpful task    
-python simple_eval/judge_eval.py --model qwen2.5_7b_instruct --base_url http://localhost:8000/v1 --task hh_rlhf_helpful 
+python simple_eval/judge_eval.py --model qwen2.5_7b_instruct --base_url http://localhost:8000/v1 --task hh_rlhf_helpful
 ```
-#### Qucik Evaluation of OpenAI models
+#### Qucik Evaluation of LLM-as-Judges (OpenAI models)
 ```bash
 export OPENAI_API_KEY=[YOUR OPENAI API KEY HERE]  # You need to set OPENAI_API_KEY environment variable
 cd llm-judge-eval

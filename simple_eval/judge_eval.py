@@ -50,12 +50,12 @@ if __name__ == "__main__":
   if task == "summary":
     datalist = list(
         jsonl_file_read(
-            "./example_datasets/sampled_data.summarize.2025-03-18/data.split_0.jsonl"
+            "./examples/example_datasets/sampled_data.summarize.2025-03-18/data.split_0.jsonl"
         ))
   elif task == "hh_rlhf_helpful":
     datalist = list(
         jsonl_file_read(
-            "./example_datasets/sampled_data.hhrlhf_helpful.2025-03-18/data.split_0.jsonl"
+            "./examples/example_datasets/sampled_data.hhrlhf_helpful.2025-03-18/data.split_0.jsonl"
         ))
 
   # make judging results
