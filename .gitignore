@@ -7,3 +7,4 @@ outputs/
 scripts/test_experiment/
 scripts/legacy/
 temp_codes/
+.venv/

@@ -15,9 +15,20 @@ In this work, we systematically evaluate LLM-as-a-Judge methodology on two LLM a
 ### Package installation
 Run the following command to install the required Python packages.
 ```bash
+# install uv
+pip install uv
+
+# build virtual environment
+uv venv --python 3.11
+source .venv/bin/activate
+
+# install requirement
+uv pip install -r requirements.txt
+```
+<!-- ```bash
 # The python environment has been tested on python=3.8, 3.8.19, 3.9.6
 pip install -r requirements.txt
-```
+``` -->
 
 ### Dataset Preprocessing
 Use the following command to prepare a formatted dataset for the LLM judge evaluation process. 
@@ -71,6 +82,48 @@ Visualization results related to evaluating LLM judges (models + different templ
 <img src="./example_results/accuracy_both_summary.png" width="300"/>   <img src="./example_results/position_bias_summary.png" width="300"/>
 <img src="./example_results/length_bias_summary.png" width="300"/>   <img src="./example_results/position_bias_accuracy_summary.png" width="300"/>
 
+#### Quick Evaluation of Open-Source LLM for Accuracy (Both) and Accuracy (Random)
+##### Build up an LLM inference API service using vllm
+Here is an example command to set up an LLM inference API service using vllm (See vllm [quickstart]() for more usage)
+```bash
+CUDA_VISIBLE_GPUS=0 vllm serve Qwen/Qwen2.5-1.5B-Instruct --port 8000 --served-model-name qwen2.5_1.5b_instruct --max-model-len 2024
+```
+A LLM inference API service compatible with OpenAI API service is then built with attributes: 
+* model: qwen2.5_1.5b_instruct
+* base_url: http://localhost:8000/v1
+
+Use the command below to check if the API service is setup successfully or not:
+```bash
+curl http://localhost:8000/v1/models
+curl http://localhost:8000/v1/completions \
+    -H "Content-Type: application/json" \
+    -d '{
+        "model": "qwen2.5_1.5b_instruct",
+        "prompt": "San Francisco is a",
+        "max_tokens": 7,
+        "temperature": 0
+    }'
+```
+##### Qucik Evaluation of LLM-as-Judge
+```bash
+# enter the project directory
+cd llm-judge-eval
+
+# summary task
+python simple_eval/judge_eval.py --model qwen2.5_1.5b_instruct --base_url http://localhost:8000/v1 --task summary
+
+# hh_rlhf_helpful task    
+python simple_eval/judge_eval.py --model qwen2.5_1.5b_instruct --base_url http://localhost:8000/v1 --task hh_rlhf_helpful 
+```
+##### ##### Qucik Evaluation of OpenAI models
+```bash
+export OPENAI_API_KEY=[YOUR OPENAI API KEY HERE]  # You need to set OPENAI_API_KEY environment variable
+cd llm-judge-eval
+python simple_eval/judge_eval.py --model gpt-4o-mini --task summary            # summary task
+python simple_eval/judge_eval.py --model gpt-4o-mini --task hh_rlhf_helpful    # hh_rlhf_helpful task
+python simple_eval/judge_eval.py --model gpt-4o --task summary                 # summary task
+python simple_eval/judge_eval.py --model gpt-4o --task summhh_rlhf_helpfulary  # summary task
+```
 
 ### References
 ```

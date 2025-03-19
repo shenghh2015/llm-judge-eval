@@ -4,13 +4,13 @@ import os
 
 def main():
 
-  # openai model: gpt-4o, gpt-to-mini
+  # openai model: gpt-4o, gpt-to-mini, etc.
   # model = "gpt-4o-mini"
   # api_key = os.environ.get("OPENAI_API_KEY")  # export OPENAI_API_KEY=[YOUR_OPENAI_API_KEY]
   # base_url = ""
 
-  # opensource model served by vllm
-  # commond: vllm serve --model Qwen/Qwen2.5-7B-Instruct --port 8000 --served_model_name qwen25_7b_instr --tensor-parallel-size 1 --max-model-len 2048
+  # opensource model served by vllm using bash command:
+  # CUDA_VISIBLE_DEVICES=0 vllm serve --model Qwen/Qwen2.5-7B-Instruct --port 8000 --served_model_name qwen25_7b_instr --max-model-len 2048
   model = "qwen25_7b_instr"
   base_url = "http://localhost:8000/v1"
   api_key = "EMPTY"

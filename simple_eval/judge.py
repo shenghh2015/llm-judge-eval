@@ -1,8 +1,8 @@
 from openai import OpenAI
 from threading import Thread
-from simple_eval.common_utils import (prompting, call_model_service,
-                                      extract_json_from_text, compute_acc_both,
-                                      compute_acc_random)
+from simple_eval.eval_utils import (prompting, call_model_service,
+                                    extract_json_from_text, compute_acc_both,
+                                    compute_acc_random)
 
 
 class LLMJudge:
@@ -80,7 +80,7 @@ class LLMJudge:
 
     return {
         "acc_both": acc_both,
-        "valid_count_boath": valid_count_both,
+        "valid_count_both": valid_count_both,
         "acc_random": acc_random,
         "valid_count_random": valid_count_random
     }
