@@ -9,3 +9,4 @@ scripts/legacy/
 temp_codes/
 .venv/
 outputs/.cache*
+outputs_test/
