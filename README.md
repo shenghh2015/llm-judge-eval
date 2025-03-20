@@ -97,9 +97,9 @@ We build a mini-benchmark that contains a mini-dataset of `400` test cases: `200
 We use prompting templates (`simple_eval/templates`) similar to those used in [Rafailov et al.](https://arxiv.org/abs/2305.18290), as they generally yield robust results based on our systematic evaluation with diverse prompt templates.
 We evaluated widely used commercial models (`gpt-4o`) and open-source state-of-the-art models (`Qwen2.5`, `LLaMA3-3`, `DeepSeek-R1`) and benchmarked them in the following table.
 
-# Evaluation Results
+### Evaluation Results
 
-## Summary
+#### Summary
 
 | Models                 | Acc_both | Valid_count_both | Acc_random | Valid_count_random |
 |------------------------|---------|------------------|------------|--------------------|
@@ -113,7 +113,7 @@ We evaluated widely used commercial models (`gpt-4o`) and open-source state-of-t
 | LLaMA-3.1-70B-Instruct | 0.535   | 200              | 0.71       | 200               |
 | LLaMA-3.3-70B-Instruct | 0.52    | 200              | 0.705      | 200               |
 
-## HH-RLHF-Helpful
+#### HH-RLHF-Helpful
 | Models                 | Acc_both | Valid_count_both | Acc_random | Valid_count_random |
 |------------------------|---------|------------------|------------|--------------------|
 | GPT-4o                | 0.57    | 200              | 0.675      | 200               |
