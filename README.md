@@ -6,7 +6,7 @@
 
 ## Table of Contents
 We aim at providing `evaluation tools` and `mini-benchmarks` to _quickly_ and _conveniently_ examinate the judging ability and vunerabilities of LLMs-as-judges for a variety of taks. Our repository includes:
-* [📊`LLM-as-Judge Mini-Benchmark` ](#llm-as-judge-mini-benchmark): A ini-Benchmark that compare the judging ability of LLM-as-Judges for a variety of tasks.
+* [📊`LLM-as-Judge Mini-Benchmark` ](#llm-as-judge-mini-benchmark): A mini-Benchmark that compare the judging ability of LLM-as-Judges for a variety of tasks.
 * [🚀 `Quick Evaluation Tool`](#llms-as-judges-quick-evaluation): A simple evaluation tool that allows users to quickly examine the judging ability of commercial models (OpenAI models) and open-source models with minimal setup effort.
 * [📖`ICRL 2025 Workshop Paper`](https://arxiv.org/abs/2408.13006): A codebase for our paper: _Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates_. We systematically evaluated LLM-as-a-Judge methodolodies on two datasets (i.e ``TL;DR Summerization`` and ``HH-RLHF-Helpful``):
   - We define evaluation metrics with improved theoretical interpretability. 
@@ -96,6 +96,40 @@ python simple_eval/judge_eval.py --model qwen2.5_7b_instruct --base_url http://l
 We build a mini-benchmark that contains a mini-dataset of `400` test cases: `200` are drawn from the `summary` dataset, and the other 200 are drawn from the `hh_rlhf_helpful` dataset, using a stratified sampling strategy introduced in our paper.
 We use prompting templates (`simple_eval/templates`) similar to those used in [Rafailov et al.](https://arxiv.org/abs/2305.18290), as they generally yield robust results based on our systematic evaluation with diverse prompt templates.
 We evaluated widely used commercial models (`gpt-4o`) and open-source state-of-the-art models (`Qwen2.5`, `LLaMA3-3`, `DeepSeek-R1`) and benchmarked them in the following table.
+
+# Evaluation Results
+
+## Summary
+
+| Models                 | Acc_both | Valid_count_both | Acc_random | Valid_count_random |
+|------------------------|---------|------------------|------------|--------------------|
+| GPT-4o                 | 0.645   | 200              | 0.705      | 200               |
+| GPT-4o-mini            | 0.52    | 200              | 0.68       | 200               |
+| Deeoseek-R1-70B        | 0.596   | **198**          | 0.707      | **198**           |
+| Deepseek-R1-32B        | 0.482   | **195**          | 0.657      | **198**           |
+| Qwen2.5-32B-Instruct   | 0.58    | 200              | 0.7        | 200               |
+| Qwen2.5-72B-Instruct   | 0.563   | 199              | 0.72       | 200               |
+| QwQ-32B                | 0.675   | **154**          | 0.705      | **176**           |
+| LLaMA-3.1-70B-Instruct | 0.535   | 200              | 0.71       | 200               |
+| LLaMA-3.3-70B-Instruct | 0.52    | 200              | 0.705      | 200               |
+
+## HH-RLHF-Helpful
+| Models                 | Acc_both | Valid_count_both | Acc_random | Valid_count_random |
+|------------------------|---------|------------------|------------|--------------------|
+| GPT-4o                | 0.57    | 200              | 0.675      | 200               |
+| GPT-4o-mini           | 0.34    | 200              | 0.65       | 200               |
+| Deeoseek-R1-70B       | 0.52    | 200              | 0.66       | 200               |
+| Deepseek-R1-32B       | 0.475   | 200              | 0.585      | 200               |
+| Qwen2.5-32B-Instruct  | 0.485   | 200              | 0.625      | 200               |
+| Qwen2.5-72B-Instruct  | 0.42    | 200              | 0.63       | 200               |
+| QwQ-32B               | 0.617   | **133**          | 0.673      | **156**           |
+| LLaMA-3.1-70B-Instruct| 0.5     | 200              | 0.65       | 200               |
+| LLaMA-3.3-70B-Instruct| 0.3     | 200              | 0.565      | 200               |
+
+---
+
+### **Notes:**
+- **Bold numbers** indicate values that are less than 200 in the `Valid_count_both` and `Valid_count_random` columns.
 
 ## 📖 Systematic Evaluation of LLM-as-Judges
 ### Dataset Preprocessing
