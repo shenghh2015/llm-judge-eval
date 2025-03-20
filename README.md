@@ -93,9 +93,9 @@ python simple_eval/judge_eval.py --model qwen2.5_7b_instruct --base_url http://l
 ```
 
 ## 📊 LLM-as-Judge Mini-Benchmark
-We build a `mini-benchmark` contains a mini-dataset of `400` test cases: `200` are drawn from the `summary` dataset and the other `200` are drawn from `hh_rlhf_helpful` dataset, using a stratified sampling strategy introduced in our paper.
-We redesigned prompting templates (`simple_eval/templates`) to silict LLMs to deliver much higher accuracy compared to the diverse prompts commonly used in the two tasks.
-We evaluted widely-used commerical models (`gpt-4o`) and open-sourced state-of-the-art models (`Qwen2.5`, `llama3.3`, `deepseek-r1`) and benchmark them in the following table.
+We build a mini-benchmark that contains a mini-dataset of `400` test cases: `200` are drawn from the `summary` dataset, and the other 200 are drawn from the `hh_rlhf_helpful` dataset, using a stratified sampling strategy introduced in our paper.
+We use prompting templates (`simple_eval/templates`) similar to those used in [Rafailov et al.](https://arxiv.org/abs/2305.18290), as they generally yield robust results based on our systematic evaluation with diverse prompt templates.
+We evaluated widely used commercial models (`gpt-4o`) and open-source state-of-the-art models (`Qwen2.5`, `LLaMA3-3`, `DeepSeek-R1`) and benchmarked them in the following table.
 
 ## 📖 Systematic Evaluation of LLM-as-Judges
 ### Dataset Preprocessing

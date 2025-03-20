@@ -1,9 +1,9 @@
 from simple_eval.judge import LLMJudge
+from simple_eval.llm_servers import LLM_SERVERS
 from simple_eval.templates import PROMPT_TEMPLATES
-from utils.utils_read_write import jsonl_file_read
+from utils.utils_read_write import jsonl_file_read, jsonl_file_write
 import os
 import argparse
-
 
 def get_args():
   parser = argparse.ArgumentParser(description="LLM Judge Evaluation")
@@ -37,6 +37,9 @@ if __name__ == "__main__":
 
   prompt_template = PROMPT_TEMPLATES[task]
 
+  if base_url == "":
+    base_url = LLM_SERVERS[model]
+
   if model in ["gpt-3.5-turbo", "gpt-4o", "gpt-4o-mini", "gpt-4"]:
     api_key = os.environ.get("OPENAI_API_KEY", "[YOUR API KEY]")
 
@@ -67,10 +70,10 @@ if __name__ == "__main__":
 
   # llm judge evaluation
   eval_result = llm_judge.evaluate()
+  llm_judge.save(f"./outputs/.cache_eval_results/{model}_{task}_judging_result.jsonl")
   print(eval_result)
 
   # save eval result
   os.makedirs("./outputs/.cache_eval_results", exist_ok=True)
-  with open(f"./outputs/.cache_eval_results/{model}_{task}_eval_result.jsonl",
-            "w") as f:
-    f.write(str(eval_result))
+  eval_result_path = f"./outputs/.cache_eval_results/{model}_{task}_eval_result.jsonl"
+  jsonl_file_write([eval_result], eval_result_path)

@@ -9,7 +9,7 @@ def jsonl_file_read(file_path: str) -> list:
   return data_list
 
 
-def json_file_write(datalist: list, file_path) -> None:
+def jsonl_file_write(datalist: list, file_path) -> None:
   with open(file_path, 'w') as f:
     for data in datalist:
       f.write(json.dumps(data) + '\n')
@@ -71,19 +71,22 @@ def compute_acc_both(outcome_list1, outcome_list2):
       continue
     else:
       valid_count += 1
-      if outcome1 == 1 - outcome2:
+      if outcome1 == 1 - outcome2 == 1:
         acc_both += 1
   return acc_both / valid_count, valid_count
 
 
-def compute_acc_random(outcome_list1, outcome_list2, random_seed):
+def compute_acc_random(outcome_list1, outcome_list2, random_seed=42):
   random.seed(random_seed)
   valid_count = 0
   acc_random = 0
+  # print(outcome_list1[:15])
+  # print(reversed_output_lists[:15])
+  reversed_output_lists = [1 - outcome for outcome in outcome_list2]
   assert len(outcome_list1) == len(outcome_list2), "Inconsistent lengths."
-  for outcome1, outcome2 in zip(outcome_list1, outcome_list2):
-    outcome = outcome1 if random.random() < 0.5 else 1 - outcome2
-    if outcome == -1:
+  for outcome1, outcome2 in zip(outcome_list1, reversed_output_lists):
+    outcome = outcome1 if random.random() < 0.5 else outcome2
+    if not outcome in [0, 1]:
       continue
     else:
       valid_count += 1
