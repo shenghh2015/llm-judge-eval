@@ -1,13 +1,12 @@
-<h1 align="center">Systematic Evaluation of LLM-as-a-Judge: Explainable Metrics, Diverse Prompt Templates, and Diverse Models</h2>
+<h1 align="center">Systematic Evaluation of LLM judges for Pairwise Evaluation: Explainable Metrics, Diverse Prompt Templates, and Diverse Models</h2>
 
-[ 📊 `LLM-as-Judge Mini-Benchmark` ](#llm-as-judge-mini-benchmark) 
-[ 📖 `ICRL 2025 Workshop Paper` ](https://arxiv.org/abs/2408.13006) 
-[ 📜 `BibTeX` ](#references)
+[📖 `ICRL 2025 Workshop Paper` ](https://arxiv.org/abs/2408.13006) 
+[🚀 `Quick Evaluation Tool`](#llms-as-judges-quick-evaluation)
+[📜 `BibTeX` ](#references)
 
 ## Table of Contents
-We aim at providing `evaluation tools` and `mini-benchmarks` to _quickly_ and _conveniently_ examinate the judging ability and vunerabilities of LLMs-as-judges for a variety of taks. Our repository includes:
-* [📊`LLM-as-Judge Mini-Benchmark` ](#llm-as-judge-mini-benchmark): A mini-Benchmark that compare the judging ability of LLM-as-Judges for a variety of tasks.
-* [🚀 `Quick Evaluation Tool`](#llms-as-judges-quick-evaluation): A simple evaluation tool that allows users to quickly examine the judging ability of commercial models (OpenAI models) and open-source models with minimal setup effort.
+We aim at providing `Judge Evaluation Framework (JudgeEval)` for _quickly_ and _conveniently_ examinating the ability (accuracy_both, accuracy_random) and vunerabilities (position bias, length bias, and self-inconsisitency) of LLM-as-a-judge methods for diverse taks. Our repository includes:
+* [🚀 `Quick Evaluation Tool`](#llms-as-judges-quick-evaluation): A simple evaluation tool that allows users to _quickly_ examine the judging ability of `commercial models` (OpenAI models) and `open-source models` with minimal setup effort.
 * [📖`ICRL 2025 Workshop Paper`](https://arxiv.org/abs/2408.13006): A codebase for our paper: _Systematic Evaluation of LLM-as-a-Judge in LLM Alignment Tasks: Explainable Metrics and Diverse Prompt Templates_. We systematically evaluated LLM-as-a-Judge methodolodies on two datasets (i.e ``TL;DR Summerization`` and ``HH-RLHF-Helpful``):
   - We define evaluation metrics with improved theoretical interpretability. 
   - We develop a framework to evaluate, compare, and visualize the reliability and alignment of LLM judges.
@@ -34,25 +33,27 @@ uv pip install -r requirements.txt
 
 # export python path
 vim ~/.bashrc
-export PYTHONPATH=.
+export PYTHONPATH=./
+source ~/.bashrc
 ```
 
-### Option 2: Using conda
+### Option 2: Using conda installation
 ```bash
 conda -n llm_judge_eval python=3.11
 conda activate llm_judge_eval
 pip install -r requirements.txt
 
 # export python path
-vim ~/.bashrc
+vim ~/.bashrc 
 export PYTHONPATH=.
+source ~/.bashrc
 ```
 
 ## 🚀 LLMs-as-Judges Quick Evaluation
 
-### Evaluation of OpenAI GPT models
+### OpenAI GPT models
 ```bash
-export OPENAI_API_KEY=[YOUR OPENAI API KEY HERE]  # You need to set OPENAI_API_KEY environment variable
+export OPENAI_API_KEY=[YOUR OPENAI API KEY]  # You need to set OPENAI_API_KEY to run openai models for judging
 cd llm-judge-eval
 python simple_eval/judge_eval.py --model gpt-4o-mini --task summary            # summary task
 python simple_eval/judge_eval.py --model gpt-4o-mini --task hh_rlhf_helpful    # hh_rlhf_helpful task
@@ -60,7 +61,7 @@ python simple_eval/judge_eval.py --model gpt-4o --task summary                 #
 python simple_eval/judge_eval.py --model gpt-4o --task summhh_rlhf_helpfulary  # summary task
 ```
 
-### Evaluation of Open-sourced models
+### Open-sourced models
 #### Set up an LLM inference API service using [vllm](https://docs.vllm.ai/en/latest/getting_started/quickstart.html)
 ```bash
 # An example of setting up an LLM inference API service
@@ -92,14 +93,14 @@ python simple_eval/judge_eval.py --model qwen2.5_7b_instruct --base_url http://l
 python simple_eval/judge_eval.py --model qwen2.5_7b_instruct --base_url http://localhost:8000/v1 --task hh_rlhf_helpful
 ```
 
-## 📊 LLM-as-Judge Mini-Benchmark
-We build a mini-benchmark that contains a mini-dataset of `400` test cases: `200` are drawn from the `summary` dataset, and the other 200 are drawn from the `hh_rlhf_helpful` dataset, using a stratified sampling strategy introduced in our paper.
-We use prompting templates (`simple_eval/templates`) similar to those used in [Rafailov et al.](https://arxiv.org/abs/2305.18290), as they generally yield robust results based on our systematic evaluation with diverse prompt templates.
-We evaluated widely used commercial models (`gpt-4o`) and open-source state-of-the-art models (`Qwen2.5`, `LLaMA3-3`, `DeepSeek-R1`) and benchmarked them in the following table.
+### LLM-as-Judge evaluation on a mini dataset
+We build a mini-benchmark dataset that contains `400` test cases: `200` are drawn from the `summarize` dataset, and the other 200 are drawn from the `hhrlhf_helpful` dataset, using a stratified sampling strategy introduced in our paper.
+We adopted prompting templates (`simple_eval/templates`) that are similar to the ones suggested in [Rafailov et al.](https://arxiv.org/abs/2305.18290), as their templates are generally robust based on our systematic evaluation with diverse prompt templates.
+We evaluated widely-used commercial models (`gpt-4o`) and open-source state-of-the-art models (`Qwen2.5`, `LLaMA3-3`, `DeepSeek-R1`). The results are shown below. Here, we aimed to provide a general comparison.
 
-### Evaluation Results
+#### Evaluation Results
 
-#### Summary
+* Summary Task
 
 | Models                 | Acc_both | Valid_count_both | Acc_random | Valid_count_random |
 |------------------------|---------|------------------|------------|--------------------|
@@ -113,7 +114,7 @@ We evaluated widely used commercial models (`gpt-4o`) and open-source state-of-t
 | LLaMA-3.1-70B-Instruct | 0.535   | 200              | 0.71       | 200               |
 | LLaMA-3.3-70B-Instruct | 0.52    | 200              | 0.705      | 200               |
 
-#### HH-RLHF-Helpful
+* HH-RLHF-Helpful task
 | Models                 | Acc_both | Valid_count_both | Acc_random | Valid_count_random |
 |------------------------|---------|------------------|------------|--------------------|
 | GPT-4o                | 0.57    | 200              | 0.675      | 200               |
