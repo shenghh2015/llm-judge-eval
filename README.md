@@ -115,6 +115,7 @@ We evaluated widely-used commercial models (`gpt-4o`) and open-source state-of-t
 | LLaMA-3.3-70B-Instruct | 0.52    | 200              | 0.705      | 200               |
 
 * HH-RLHF-Helpful task
+
 | Models                 | Acc_both | Valid_count_both | Acc_random | Valid_count_random |
 |------------------------|---------|------------------|------------|--------------------|
 | GPT-4o                | 0.57    | 200              | 0.675      | 200               |
