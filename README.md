@@ -132,6 +132,8 @@ We evaluated widely-used commercial models (`gpt-4o`) and open-source state-of-t
 
 ### **Notes:**
 - **Bold numbers** indicate values that are less than 200 in the `Valid_count_both` and `Valid_count_random` columns.
+- *Acc_both* and *Acc_random* are the accuracies that measure the judging abilities of LLM judges.
+- *Valid_count_both* and *Valid_count_radom* are the number of results among the 200 test cases that generate the required format, which rougly indicate the instruction following abilities.
 
 ## 📖 Systematic Evaluation of LLM-as-Judges
 ### Dataset Preprocessing
